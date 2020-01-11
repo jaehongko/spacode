@@ -1,0 +1,25 @@
+<html>
+<head>
+	<!-- head 안에 들어 갈 어떤 요소들을 여기에 넣습니다 -->
+	<title>재홍 숙제1</title>
+</head>
+
+<style>
+
+	.image {
+		background-image: url('http://www.forest.go.kr/newkfsweb/cmm/fms/FileDown.do?atchFileId=FILE_000000010008639&fileSn=0');
+	}
+
+</style>
+
+
+
+
+<body>
+	<div>
+
+		<img src="keyboard.jpeg alt="My Image">
+	</div>
+	<p>dk</p>
+</body>
+</html>
