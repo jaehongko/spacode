@@ -2,9 +2,88 @@
 <head>
 	<!-- head 안에 들어 갈 어떤 요소들을 여기에 넣습니다 -->
 	<title>재홍 숙제1</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+
+
+	<script>
+		function q1(){
+			let phonenum = $('#phone').val();
+			
+
+			let regPhone = /^(?:(010-\d{4})|(01[1|6|7|8|9]-\d{3,4}))-(\d{4})$/;
+
+
+		if(name_.value == ''){
+			alert('이름을 입력하세요!');
+			$('#name_').focus();
+			return false;
+		}
+
+		if(select_.value =='수량을 선택하던지 말던지'){
+			alert('수량을 선택해주세요!');
+			$('#select_').focus();
+			return false;
+		}
+
+        if  (address.value== ''){
+          alert('주소를 입력하세요');
+          $('#address').focus();
+          return false;
+        }
+        if  (number.value == ''){
+          alert('번호를 입력하세요');
+          $('#number').focus();
+          return false;
+
+ 
+       }
+
+        if(!regPhone.test(phonenum)){
+
+			alert('잘못된 휴대폰 번호입니다.');
+
+			$('#phone').focus();
+
+			return false;  
+        }
+
+       alert('주문이 완료 되었습니다')
+
+      }
+
+
+
+    	
+
+
+
+    </script>
 </head>
 
 <style>
+
+body{
+	width: 60%;
+	text-align: center;
+			background-image: url);
+			background-size:cover;
+			background-position: center;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		background-size:cover;
+		background-position: center;
+		margin: auto;
+
+}
 
 	.box{
 		border: 2px solid;
@@ -36,11 +115,11 @@
 		.btn{
 			padding: 10px 200px 10px 200px;
 			margin-left: : 100px;
+			background-color: grey;
 		}
-		.order-list{
-			display: inline-block;
 
-		}
+
+		
 		
 
 </style>
@@ -49,6 +128,12 @@
 
 
 <body>
+
+	
+
+
+
+
 	<div class="box">
 
 
@@ -65,52 +150,60 @@
 		<h2>상품제목</h2>
 		<p>가격:1,000,000원 / 개</p>
 	</div>
-	<p>이 상품으로 말할 것 같으면 용왕이 찾지 못한 토끼의 간을 찾아 빨간망토의 늑대와 아기 돼지 삼형제의 </br>숨결이 고루 녹아 있는 먹으면 120세까지 살 수 있다는 이 상품으로 말할 것 같으면 용왕이 찾지 못지 못한 토끼의 간을 찾아 빨간망토의 늑디와 아기 돼지..</p>
+	<p>안촉촉한 초코칩 나라에 살던 안촉촉한 초코칩이 촉촉한 초코칩 나라의 촉촉한 초코칩을 보고 촉촉한 초코칩이 되고 싶어서 촉촉한 초코칩 나라에 갔는데 촉촉한 초코칩 나라의 촉촉한 초코칩 문지기가 "넌 촉촉한 초코칩이 아니고 안촉촉한 초코칩이니까 안촉촉한 초코칩나라에서 살아"라고해서 안촉촉한 초코칩은 촉촉한 초코칩이 되는것을 포기하고 안촉촉한 초코칩 나라로 돌아갔다.</p>
 
 
 
 	<div class="text-layout2">
 		<h2>주문하기</h2>
 
-		<div>
-			주문자 성함:<input type="text">
-
+		<div class="input-group flex-nowrap">
+  			<div class="input-group-prepend">
+    			<span class="input-group-text">주문자 성함:</span>
+  			</div>
+  				<input id="name_" type="text" class="form-control">
 		</div>
 
 
-		<div>
-			
-			수량:<select>
-				<option>1개</option>
-				<option>2개</option>
-				<option>3개</option>
-				<option>4개</option>
-				<option>5개</option>
-				<option>6개</option>
-				<option>7개</option>
-				<option>8개</option>
-				<option>9개</option>
-				<option>직접 입력하기</option>
-			</select>
-			
+		<div class="input-group mb-3">
+  			<div class="input-group-prepend">
+  			  <label class="input-group-text" for="inputGroupSelect01">수량:</label>
+  			</div>
+  			<select class="custom-select" id="select_">
+   				 <option selected>수량을 선택하던지 말던지</option>
+   				 <option value="1">하나</option>
+   				 <option value="2">둘</option>
+    			<option value="3">셋</option>
+    			<option value="얍">야!</option>
+			 </select>
 		</div>
 
 
-		<div>
-			주소:<input type="text">
-	
+
+		<div class="input-group flex-nowrap">
+  			<div class="input-group-prepend">
+    			<span class="input-group-text">주소:</span>
+  			</div>
+  				<input  id="address"type="text" class="form-control"apping >
 		</div>
 
 
-		<div>
-			
-			전화번호: <input type="text">
-			
+
+
+		<div class="input-group flex-nowrap">
+  			<div class="input-group-prepend">
+    			<span class="input-group-text">전화번호:</span>
+  			</div>
+  				<input id="number" type="text" class="form-control" >
 		</div>
+
+
 
 		<div class="order">
 			
-			<button class="btn">주문하기</button>
+			<button onclick="q1()" class="btn">주문하기</button>
+
+			
 		</div>
 	</div>
 

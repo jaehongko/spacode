@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Webpage Title -->
+  <title>iphone</title>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <!-- JS -->   
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <script>
+
+    function blinker() {
+      $('#blinking').fadeOut(500);
+      $('#blinking').fadeIn(500);
+    }
+
+    setInterval(blinker, 800);
+
+    let num = 0;
+
+    function order(){
+
+      let names = $('#input-name').val();
+      let color = $('#inputGroupSelect01').val();
+      let colorselected = $('#inputGroupSelect01 option:selected').text();
+      let vol = $('#inputGroupSelect02').val();
+      let volselected = $('#inputGroupSelect02 option:selected').text();
+      let address = $('#input-address').val();
+      let phone = $('#phone-num').val();
+      var regExp = /^(01[016789]{1})[-][0-9]{3,4}[-][0-9]{4}$/;
+      var buyers = names.replace(/(?<=.{1})./, "*");
+      let customer =  
+      '<tr>\
+      <td scope="row">' + (num+1) + '</td>\
+      <td>' + buyers + '</td>\
+      <td>' + colorselected + '</td>\
+      <td>' + volselected + '</td>\
+      </tr>';
+
+
+      if (names == '') {
+        alert('이름을 확인하세요!!');
+        $('#input-name').focus()
+
+      } else if (color == '--색상을 선택하세요--') {
+        alert('색상을 확인하세요!!');
+        $('#inputGroupSelect01').focus()
+
+
+      } else if(vol == '--용량을 선택하세요--') {
+        alert('용량을 확인하세요!!');
+        $('#inputGroupSelect02').focus()
+
+
+      } else if (address == ''){
+        alert('주소를 확인하세요!!');
+        $('#input-address').focus()
+
+
+      } else if (phone == ''){
+        alert('전화번호를 확인하세요!!');
+        $('#phone-num').focus()
+
+
+      } else if (regExp.test(phone) == false){
+        alert('전화번호 서식을 확인하세요!\n01X-XXXX-XXXX');
+        $('#phone-num').focus()
+
+
+      } else if (num < 10){
+        var result = confirm('이름 ------ ' +names+ '\n색상 ------ ' +colorselected+ '\n용량 ------ ' +volselected+ '\n주소 ------ ' +address+ '\n전화번호 - ' +phone+ '\n\n이대로 주문하시겠습니까?');
+
+        if (result){
+          num++;
+          alert( '축하드립니다! '+names+ '님은' +num+ "번째로 주문 성공하셨습니다!");
+          $('#info-table').show()
+          $('#order-list').append(customer)
+
+        } else {
+          alert("주문 취소하셨습니다.")
+          return;
+        }
+
+      } else {
+        alert('품절입니다!');
+        return;
+      }
+    }
+
+  </script>
+
+</head>
+
+<style>
+
+  @import url('https://fonts.googleapis.com/css?family=Hi+Melody&display=swap&subset=korean');
+
+  body {
+    background-color: #E8E5A3;
+  }
+
+  .group{
+    border:1px solid black;
+    margin:50px auto 50px auto;
+    width: 600px;
+    padding:30px;
+    border-radius: 10px;
+    font-family: 'Hi Melody';
+    background-color: #F7F8E0;
+  }
+
+  .sale{
+    text-align: center;
+    color:red;
+
+  }
+
+  .img{
+    width: 400px;
+    margin:0px auto 10px auto;
+    border-radius: 10px;
+  }
+
+  .price{
+    font-size: 20px;
+  }
+
+  .sale_price{
+    font-size: 30px;
+    color: red;
+  }
+
+  .description{
+    font-size: 20px;
+  }
+
+  .orderbutton{
+    text-align: center;
+  }
+
+  .table{
+    display: none;
+    margin-top: 20px;
+  }
+
+</style>
+
+<body>
+
+  <div class="group">
+
+    <div class="sale" id="blinking">
+      <h1>
+        <b> 선착순 10개 한정!<br> 
+          초초초 특가판매 이벤트!!
+        </b>
+      </h1>
+    </div>
+
+    <div class="img">
+      <img src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone11-select-2019-family?wid=400&hei=400&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1567022175704" 
+      alt="..." class="img-thumbnail">
+    </div>
+
+
+    <div class = "goodprice">
+      <h1 > Iphone 11 
+        <span class="price"> 
+          <del>가격 1,000,000원/개
+          </del>
+        </span> 
+        <span class="sale_price"> &nbsp; &nbsp; 할인가격 = 1,111원 
+        </span>
+      </h1>
+
+    </div>
+
+    <hr>
+
+    <div>
+
+      <h6 class="description"> 
+        새로운 듀얼 카메라 시스템은 소중한 순간들을 더욱 넓은 장면으로 포착할 수 있게 해줍니다. 스마트폰 사상 가장 빠른 칩과 온종일 가는 배터리 덕분에 충전을 자주 안 해도 더욱 많은 일들을 해낼 수 있죠. 여기에 스마트폰 사상 최고 퀄리티의 동영상을 찍을 수 있기 때문에, 당신의 추억들을 그 어느 때보다 선명하고 아름답게 기록할 수 있습니다.
+      </h6>
+
+      <h1 class="order">
+        주문하기
+      </h1>
+    </div>
+
+    <div>
+
+      <div class="input-group mb-3" id="name-info">
+
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-default">이름
+          </span>
+        </div>
+        <input type="text" placeholder="이름을 입력하세요" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" id="input-name"> 
+
+      </div>
+
+      <div class="input-group mb-3">
+
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">색상</label>
+        </div>
+
+        <select class="custom-select" id="inputGroupSelect01">
+          <option selected>--색상을 선택하세요--</option>
+          <option value="1">노랑</option>
+          <option value="2">민트</option>
+          <option value="3">퍼플</option>
+          <option value="3">레드</option>
+          <option value="3">블랙</option>
+          <option value="3">화이트</option>
+        </select>
+
+      </div>
+
+      <div class="input-group mb-3">
+
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect02">용량</label>
+        </div>
+
+        <select class="custom-select" id="inputGroupSelect02">
+          <option selected>--용량을 선택하세요--</option>
+          <option value="1">32GB</option>
+          <option value="2">64GB</option>
+          <option value="3">128GB</option>
+        </select>
+
+      </div>
+
+      <div class="input-group mb-3">
+
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-default">주소</span>
+        </div>
+
+        <input type="text" placeholder="주소를 입력하세요" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" id="input-address">
+
+      </div>
+
+      <div class="input-group mb-3">
+
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-default">전화번호</span>
+        </div>
+
+        <input type="text" placeholder="01X-XXXX-XXXX" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" id="phone-num">
+
+      </div>
+
+    </div>
+
+    <div class="orderbutton">
+      <button type="button" class="btn btn-primary" onclick="order()"> 주문 
+      </button>
+    </div>
+
+    
+    
+    <table id="info-table" class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">이름</th>
+          <th scope="col">색상</th>
+          <th scope="col">용량</th>
+        </tr>
+      </thead>
+      <tbody id="order-list" class="order_list">
+        
+      </tbody>
+    </table>
+
+  </div>
+
+</body>
+
+</html> 
