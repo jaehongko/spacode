@@ -48,6 +48,9 @@
 
   <script>
     
+    $(document).ready(function(){
+        listing()
+    });
 
     function openclose(){
       let open = $('#posting-box').css('display')
@@ -61,11 +64,52 @@
           $('#btn-posting-box').text('포스팅박스 열기');
 
         }
-
-
-
-      
       }
+
+
+      function listing(){
+          alert('2');
+
+
+
+
+        }
+
+        $.ajax({
+        type: "GET",
+        url: "http://spartacodingclub.shop/post",
+        data: {},
+        success: function(response){
+
+          let articles = response['articles']
+
+          $('#article-box').html('')
+          for (let i = 0; i < articles.length; i++) {
+            let image = articles[i]['image']
+            let title = articles[i]['title']
+            let desc = articles[i]['desc']
+            let comment = articles[i]['comment']
+            let url = articles[i]['url']
+
+            let temp_html = ' <div class="card">\
+        <img class="card-img-top" src="'+image+'" alt="Card image cap">\
+        <div class="card-body">\
+          <a href="'+url+'" class="card-title">'+title+'</a>\
+          <p class="card-text">'+desc+'</p>\
+          <p class="card-text comment">'+comment+'</p>\
+          </div>\
+        </div>';       
+            $('#article-box').append(temp_html);
+          }
+
+        }
+      })
+
+
+
+
+
+
 
 
 
