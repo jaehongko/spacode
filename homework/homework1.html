@@ -9,11 +9,63 @@
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    
 
 
 
 
 	<script>
+
+		$(document).ready(function() {
+
+			reacting()
+		
+
+		});
+		function reacting(){
+
+			
+			$.ajax({
+					  type: "GET",
+				      url: "http://spartacodingclub.shop/order",
+				      data: {},
+					  success: function(response){
+
+					  	let orders = response['orders']
+
+
+					  	 for (let i = 0; i < orders.length; i++){
+					  	let name = orders[i]['name'];
+					  	let address = orders[i]['address'];
+					  	let count = orders[i]['count'];
+					  	let phone = orders[i]['phone'];
+
+					  	let temp_html =
+
+                                '<tr>\
+			                      <th scope="row">' + name + '</th>\
+			                      <td>' + count +'</td>\
+			                      <td>' + address + '</td>\
+			                     <td>' + phone + '</td>\
+			                    </tr>'
+
+
+			                    $('#table_body').append(temp_html)
+
+            
+
+						}
+
+
+					  }
+					})
+
+		}
+
+
+
+
+
 		function q1(){
 			let phonenum = $('#phone').val();
 			
@@ -54,6 +106,7 @@
 
 			return false;  
         }
+        
 
        alert('주문이 완료 되었습니다')
 
@@ -205,11 +258,29 @@ body{
 
 			
 		</div>
+
+					<table class="table">
+			  <thead>
+			    <tr>
+			      <th scope="col">이름</th>
+			      <th scope="col">수량</th>
+			      <th scope="col">주소</th>
+			      <th scope="col">핸드폰번호</th>
+			    </tr>
+			  </thead>
+			  <tbody id='table_body'>
+			  </tbody>
+			</table>
 	</div>
 
 
 </div>
+
 </div>
+
+
+
+
 
 </body>
 </html>
